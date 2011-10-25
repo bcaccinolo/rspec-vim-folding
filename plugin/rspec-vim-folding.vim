@@ -1,5 +1,4 @@
 
-
 function! s:FoldItBlock()
   let start = search('^\s*\(it\|before\).*do\s*$', 'We')
   let end   = search('end', 'We')
@@ -13,6 +12,7 @@ function! s:FoldItBlock()
 endfunction
 
 function! FoldAllItBlocks()
+  let position = line('.')
   exe cursor(1,1)
   let result = 1
 
@@ -20,9 +20,9 @@ function! FoldAllItBlocks()
     let result = s:FoldItBlock()
   endwhile
 
+  call cursor(position, 1)
 endfunction
 
 nmap f1 :call FoldAllItBlocks()<CR>
 nmap f0 :execute "normal zE"<CR>
-
 
