@@ -1,6 +1,6 @@
 
 function! s:FoldItBlock()
-  let start = search('^\s*\(it\|before\).*do\s*$', 'We')
+  let start = search('^\s*\(it\|specify\|scenario\|before\).*do\s*$', 'We')
   let end   = search('end', 'We')
   let cmd = (start+1).','.(end).'fold'
   if (start > 0) && (start < end)
